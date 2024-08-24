@@ -2,8 +2,12 @@
     <head>
         <title>Carros</title>
     </head>
-    <body>
-        <h1>Carros</h1>
-        <h2>Lista de Carros</h2>
-    </body>
+    {% block content %}
+        <body>
+            <h1>Carros</h1>
+            {% for car in cars %}
+            <h2>{{car.brand}} - {{car.model}}</h2>
+            {% endfor %}
+        </body>
+    {% endblock %}
 </html>
