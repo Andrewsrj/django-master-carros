@@ -4,7 +4,9 @@ from cars.models import Car
 # Create your views here.
 
 def cars_view(request):
-    carros = Car.objects.all().order_by('model')
+    search = request.GET.get('search')
+
+    carros = Car.objects.filter(model__contains=search).order_by('-model') if search else Car.objects.all().order_by('-model')
     context = {
         'cars': carros,
     }
