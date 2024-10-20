@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from cars.models import Car
+from cars.forms import CarForm
 
 # Create your views here.
 
@@ -13,4 +14,8 @@ def cars_view(request):
     return render(request, 'cars.html', context)
 
 def new_car_view(request):
-    return render(request, "new_car.html")
+    new_car_form = CarForm()
+    context = {
+        'new_car_form': new_car_form
+    }
+    return render(request, "new_car.html", context)
