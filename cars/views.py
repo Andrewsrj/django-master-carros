@@ -11,3 +11,6 @@ def cars_view(request):
         'cars': carros,
     }
     return render(request, 'cars.html', context)
+
+def new_car_view(request):
+    return render(request, "new_car.html")
