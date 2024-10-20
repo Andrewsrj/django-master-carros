@@ -30,4 +30,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render('cars_list')
+    return redirect('cars_list')
