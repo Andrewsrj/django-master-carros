@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 def register_view(request):
     if request.method == "POST":
@@ -22,9 +22,12 @@ def login_view(request):
             return redirect('cars_list')
         else:
             auth_form = AuthenticationForm(request.POST)
-            auth_form.add_error('password', 'Usuário ou Senha estão incorretos!')
             return redirect('login')
 
     else:
         auth_form = AuthenticationForm()
     return render(request, 'login.html', {'auth_form': auth_form})
+
+def logout_view(request):
+    logout(request)
+    return render('cars_list')
